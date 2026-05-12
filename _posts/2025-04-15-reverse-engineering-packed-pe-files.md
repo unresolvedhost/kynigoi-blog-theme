@@ -1,7 +1,7 @@
 ---
 title: "Reverse Engineering Packed PE Files"
 date: 2025-04-15 11:15:00 +0800
-categories: [Reverse-Engineering]
+categories: [Reverse Engineering]
 tags: [reverse-engineering, pe, malware, x64dbg]
 author: kynigoi
 description: >

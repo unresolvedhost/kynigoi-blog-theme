@@ -9,20 +9,20 @@
 
 <!-- Favicon -->
 {% if site.favicon.ico %}
-<link rel="icon" href="{{ site.favicon.ico }}">
+<link rel="icon" href="{{ site.favicon.ico | relative_url }}">
 {% endif %}
 {% if site.favicon.apple_touch_icon %}
-<link rel="apple-touch-icon" href="{{ site.favicon.apple_touch_icon }}">
+<link rel="apple-touch-icon" href="{{ site.favicon.apple_touch_icon | relative_url }}">
 {% endif %}
 {% if site.favicon.favicon_32 %}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ site.favicon.favicon_32 }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ site.favicon.favicon_32 | relative_url }}">
 {% endif %}
 {% if site.favicon.favicon_16 %}
-<link rel="icon" type="image/png" sizes="16x16" href="{{ site.favicon.favicon_16 }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ site.favicon.favicon_16 | relative_url }}">
 {% endif %}
 
 <!-- Stylesheet -->
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

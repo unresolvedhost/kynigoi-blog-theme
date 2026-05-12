@@ -1,7 +1,7 @@
 ---
 title: "Network Forensics with Zeek"
 date: 2025-04-19 10:45:00 +0800
-categories: [Network-Forensics]
+categories: [Network Forensics]
 tags: [zeek, network-forensics, dns, traffic-analysis]
 author: kynigoi
 description: >

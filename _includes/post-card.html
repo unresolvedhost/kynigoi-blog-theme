@@ -7,7 +7,7 @@
 {% assign p = include.post %}
 {% assign is_featured = include.featured %}
 
-<a href="{{ p.url }}" class="{% if is_featured %}post-featured{% else %}post-card{% endif %}" style="display:flex; flex-direction:column;">
+<a href="{{ p.url | relative_url }}" class="{% if is_featured %}post-featured{% else %}post-card{% endif %}" style="display:flex; flex-direction:column;">
   <div class="post-meta">
     {% unless include.hide_categories %}
       {% for cat in p.categories %}

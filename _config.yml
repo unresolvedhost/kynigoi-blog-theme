@@ -4,7 +4,7 @@ description: Original research on threat detection, malware analysis, and threat
 author: kynigoi
 
 url: "https://unresolvedhost.github.io"
-baseurl: ""
+baseurl: "/kynigoi-blog-theme"
 
 timezone: Australia/Perth
 lang: en

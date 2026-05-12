@@ -1,7 +1,7 @@
 ---
 title: "Writing Effective YARA Rules for Ransomware Detection"
 date: 2025-04-13 14:00:00 +0800
-categories: [Detection]
+categories: [Detection Engineering]
 tags: [yara, ransomware, malware, detection-engineering]
 author: kynigoi
 description: >

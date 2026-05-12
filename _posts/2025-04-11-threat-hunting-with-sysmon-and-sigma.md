@@ -1,7 +1,7 @@
 ---
 title: "Threat Hunting with Sysmon and Sigma Rules"
 date: 2025-04-11 08:30:00 +0800
-categories: [Threat-Hunting]
+categories: [Threat Hunting]
 tags: [sysmon, sigma, detection-engineering, windows, hunting]
 author: kynigoi
 description: >

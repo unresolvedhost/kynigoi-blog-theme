@@ -1,7 +1,7 @@
 ---
 title: "Elastic Detection Rules for Lateral Movement"
 date: 2025-04-14 09:45:00 +0800
-categories: [Elastic]
+categories: [Detection Engineering]
 tags: [elastic, eql, detection-engineering, windows]
 author: kynigoi
 description: >
