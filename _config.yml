@@ -3,7 +3,7 @@ tagline: Threat detection research for defenders
 description: Original research on threat detection, malware analysis, and threat hunting.
 author: kynigoi
 
-url: "https://yourusername.github.io"
+url: "https://unresolvedhost.github.io"
 baseurl: ""
 
 timezone: Australia/Perth
@@ -21,7 +21,7 @@ social:
   github: unresolvedhost
   x: kynigoi
 
-github_username: yourusername
+github_username: unresolvedhost
 
 permalink: /posts/:title/
 
