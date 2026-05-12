@@ -1,0 +1,40 @@
+// ── Typography ───────────────────────────────────────────
+$font-sans:  'Mona Sans', 'Inter', 'Segoe UI', system-ui, sans-serif;
+$font-mono:  'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+// ── Dark theme (default) ─────────────────────────────────
+$dark-bg:         #0d0f14;
+$dark-bg2:        #13161e;
+$dark-bg3:        #1a1d27;
+$dark-border:     rgba(255, 255, 255, 0.07);
+$dark-text:       #e2e4ea;
+$dark-muted:      #7a7f91;
+$dark-accent:     #00d4aa;
+$dark-accent2:    #4f8ef7;
+$dark-danger:     #f06060;
+$dark-warn:       #f0a840;
+$dark-code-bg:    #0a0c11;
+$dark-tag-bg:     rgba(0, 212, 170, 0.10);
+$dark-tag-c:      #00d4aa;
+
+// ── Light theme ──────────────────────────────────────────
+$light-bg:        #f5f6f8;
+$light-bg2:       #ffffff;
+$light-bg3:       #eef0f4;
+$light-border:    rgba(0, 0, 0, 0.08);
+$light-text:      #1a1d27;
+$light-muted:     #6b7080;
+$light-accent:    #007a62;
+$light-accent2:   #1a56c4;
+$light-danger:    #c0392b;
+$light-warn:      #b07000;
+$light-code-bg:   #1a1d27;
+$light-tag-bg:    rgba(0, 122, 98, 0.10);
+$light-tag-c:     #007a62;
+
+// ── Layout ───────────────────────────────────────────────
+$max-width:       860px;
+$nav-height:      56px;
+$radius-sm:       4px;
+$radius-md:       6px;
+$radius-lg:       8px;

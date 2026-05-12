@@ -1,0 +1,61 @@
+@use "variables" as *;
+
+nav.site-nav {
+  position:        sticky;
+  top:             0;
+  z-index:         100;
+  background:      var(--bg);
+  border-bottom:   1px solid var(--border);
+  padding:         0 2rem;
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  height:          $nav-height;
+
+  .nav-logo {
+    font-family:     $font-mono;
+    font-size:       14px;
+    color:           var(--accent);
+    letter-spacing:  0.04em;
+    text-decoration: none;
+
+    span { color: var(--muted); }
+    &:hover { text-decoration: none; }
+  }
+
+  .nav-links {
+    display:     flex;
+    align-items: center;
+    gap:         1.5rem;
+
+    a {
+      font-size:  13px;
+      color:      var(--muted);
+      transition: color 0.15s;
+
+      &:hover, &.active { color: var(--text); text-decoration: none; }
+    }
+  }
+
+  .theme-toggle {
+    background:    none;
+    border:        1px solid var(--border);
+    border-radius: $radius-md;
+    cursor:        pointer;
+    color:         var(--muted);
+    padding:       4px 6px;
+    display:       flex;
+    align-items:   center;
+    transition:    color 0.15s, border-color 0.15s;
+
+    &:hover { color: var(--text); border-color: var(--muted); }
+
+    .icon-sun  { display: none; }
+    .icon-moon { display: block; }
+  }
+}
+
+[data-theme="light"] nav.site-nav .theme-toggle {
+  .icon-sun  { display: block; }
+  .icon-moon { display: none; }
+}

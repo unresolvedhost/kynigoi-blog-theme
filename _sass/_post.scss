@@ -1,0 +1,196 @@
+@use "variables" as *;
+
+// ── Post page two-column layout ──────────────────────────
+
+.post-layout {
+  display:     flex;
+  gap:         3rem;
+  max-width:   1200px;
+  margin:      0 auto;
+  padding:     0 2rem;
+  align-items: flex-start;
+}
+
+.post-content {
+  flex:      1;
+  min-width: 0;
+  padding:   2.5rem 0;
+}
+
+// ── TOC sidebar ──────────────────────────────────────────
+
+.toc-sidebar {
+  width:        220px;
+  flex-shrink:  0;
+  position:     sticky;
+  top:          80px;
+  padding:      2.5rem 0;
+  max-height:   calc(100vh - 100px);
+  overflow-y:   auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.toc-label {
+  font-family:    $font-mono;
+  font-size:      10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color:          var(--muted);
+  margin-bottom:  0.75rem;
+}
+
+.toc-nav {
+  display:        flex;
+  flex-direction: column;
+  gap:            2px;
+}
+
+.toc-link {
+  font-size:       12px;
+  color:           var(--muted);
+  text-decoration: none;
+  padding:         4px 0 4px 10px;
+  border-left:     2px solid var(--border);
+  line-height:     1.4;
+  transition:      color 0.15s, border-color 0.15s;
+
+  &:hover { color: var(--text); text-decoration: none; }
+
+  &.active {
+    color:        var(--accent);
+    border-color: var(--accent);
+  }
+
+  &.toc-h3 {
+    padding-left: 20px;
+    font-size:    11px;
+  }
+}
+
+@media (max-width: 900px) {
+  .post-layout { flex-direction: column; }
+  .toc-sidebar { display: none; }
+}
+
+// ── Article header ───────────────────────────────────────
+
+.article-header {
+  padding:       3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.article-title {
+  font-size:      clamp(1.5rem, 3vw, 2.2rem);
+  font-weight:    600;
+  line-height:    1.25;
+  letter-spacing: -0.02em;
+  margin-bottom:  1rem;
+}
+
+.back-link {
+  display:       flex;
+  align-items:   center;
+  gap:           0.4rem;
+  font-family:   $font-mono;
+  font-size:     12px;
+  color:         var(--muted);
+  margin-bottom: 1.5rem;
+  transition:    color 0.15s;
+
+  &:hover { color: var(--accent); text-decoration: none; }
+}
+
+// ── Article body ─────────────────────────────────────────
+
+.article-body {
+  max-width: 680px;
+
+  p {
+    margin-bottom: 1rem;
+    color:         var(--text);
+    font-size:     15px;
+    line-height:   1.8;
+  }
+
+  h2 {
+    font-size:      17px;
+    font-weight:    600;
+    margin:         2rem 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom:  1px solid var(--border);
+  }
+
+  h3 {
+    font-family:    $font-mono;
+    font-size:      13px;
+    font-weight:    600;
+    color:          var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin:         1.5rem 0 0.5rem;
+  }
+
+  ul, ol {
+    margin:      0.75rem 0 1rem 1.5rem;
+    color:       var(--text);
+    font-size:   15px;
+    line-height: 1.8;
+
+    li { margin-bottom: 0.25rem; }
+  }
+
+  blockquote {
+    border-left:   3px solid var(--accent);
+    padding:       0.75rem 1rem;
+    margin:        1.25rem 0;
+    color:         var(--muted);
+    font-size:     14px;
+    font-style:    italic;
+    background:    var(--bg3);
+    border-radius: 0 $radius-md $radius-md 0;
+  }
+
+  table {
+    width:           100%;
+    border-collapse: collapse;
+    font-family:     $font-mono;
+    font-size:       12px;
+    margin:          1.25rem 0;
+
+    th {
+      text-align:     left;
+      padding:        8px 12px;
+      border-bottom:  1px solid var(--border);
+      color:          var(--muted);
+      font-weight:    500;
+      font-size:      11px;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding:       8px 12px;
+      border-bottom: 1px solid var(--border);
+      color:         var(--text);
+      word-break:    break-all;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td      { background: var(--bg3); }
+  }
+
+  img {
+    max-width:     100%;
+    border-radius: $radius-md;
+    border:        1px solid var(--border);
+    margin:        1.25rem 0;
+  }
+
+  hr {
+    border:     none;
+    border-top: 1px solid var(--border);
+    margin:     2rem 0;
+  }
+}

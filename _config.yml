@@ -1,0 +1,65 @@
+title: Kynigoi Blog
+tagline: Threat detection research for defenders
+description: Original research on threat detection, malware analysis, and threat hunting.
+author: kynigoi
+
+url: "https://yourusername.github.io"
+baseurl: ""
+
+timezone: Australia/Perth
+lang: en
+
+favicon:
+  ico:             /assets/img/favicons/favicon.ico
+  apple_touch_icon: /assets/img/favicons/apple-touch-icon.png
+  favicon_32:      /assets/img/favicons/favicon-32x32.png
+  favicon_16:      /assets/img/favicons/favicon-16x16.png
+
+social:
+  email: richardphilipsroy@gmail.com
+  linkedin: richardphilipsroy
+  github: unresolvedhost
+  x: kynigoi
+
+github_username: yourusername
+
+permalink: /posts/:title/
+
+paginate: 10
+paginate_path: "/page/:num/"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+
+sass:
+  sass_dir: _sass
+  style: compressed
+  load_paths:
+    - _sass
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      toc: true
+
+collections:
+  pages:
+    output: true
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+
+jekyll-archives:
+  enabled: [categories]
+  layout: category
+  permalinks:
+    category: /categories/:name/

@@ -1,0 +1,90 @@
+@use "variables" as *;
+
+.category-strip-section {
+  margin-bottom: 3rem;
+}
+
+.category-strip-header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         0 2rem;
+  margin-bottom:   1rem;
+}
+
+.view-more-link {
+  font-family:     $font-mono;
+  font-size:       11px;
+  color:           var(--accent);
+  white-space:     nowrap;
+  text-decoration: none;
+  margin-left:     1rem;
+  padding:         4px 12px;
+  border:          1px solid var(--accent);
+  border-radius:   $radius-md;
+  transition:      background 0.15s, color 0.15s;
+
+  &:hover {
+    background: var(--accent);
+    color:      var(--bg);
+  }
+}
+
+.category-scroll-wrapper {
+  overflow-x:               auto;
+  overflow-y:               hidden;
+  padding:                  0 2rem 1rem;
+  scrollbar-width:          thin;
+  scrollbar-color:          var(--border) transparent;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar       { height: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+}
+
+.category-scroll-track {
+  display: flex;
+  gap:     1rem;
+  width:   max-content;
+}
+
+.scroll-card {
+  width:           280px;
+  flex-shrink:     0;
+  background:      var(--bg2);
+  border:          1px solid var(--border);
+  border-radius:   $radius-lg;
+  padding:         1.25rem;
+  display:         flex;
+  flex-direction:  column;
+  color:           inherit;
+  text-decoration: none;
+  transition:      border-color 0.15s;
+
+  &:hover { border-color: rgba(0, 212, 170, 0.3); text-decoration: none; }
+}
+
+.scroll-card-title {
+  font-size:      15px;
+  font-weight:    600;
+  line-height:    1.35;
+  color:          var(--text);
+  margin-bottom:  0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.scroll-card-excerpt {
+  font-size:   12px;
+  color:       var(--muted);
+  line-height: 1.6;
+  flex:        1;
+}
+
+// ── Category page full grid ──────────────────────────────
+
+.category-page-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap:                   1rem;
+}

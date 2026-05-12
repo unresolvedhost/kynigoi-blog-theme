@@ -1,0 +1,108 @@
+---
+layout: default
+---
+
+<div class="post-layout">
+
+  <!-- MAIN CONTENT -->
+  <div class="post-content">
+    <a class="back-link" href="/">&larr; back to posts</a>
+
+    <div class="article-header">
+      <div class="post-meta">
+        {% for cat in page.categories %}
+          <span class="tag {{ cat | downcase | replace: ' ', '-' }}">{{ cat }}</span>
+        {% endfor %}
+        <span class="post-date">{{ page.date | date: "%Y-%m-%d" }}</span>
+        {% if page.severity %}
+          <span class="severity {{ page.severity | downcase }}">{{ page.severity | upcase }}</span>
+        {% endif %}
+      </div>
+
+      <h1 class="article-title">{{ page.title }}</h1>
+
+      {% if page.mitre %}
+        <div class="mitre-badges">
+          {% for t in page.mitre %}
+            <span class="mitre-badge">{{ t }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="post-footer" style="margin-top: 1.5rem;">
+        <div class="post-author">
+          <div class="author-avatar">{{ site.author | upcase | slice: 0 }}</div>
+          <span class="author-name">{{ page.author | default: site.author }}</span>
+        </div>
+        {% if page.read_time %}
+          <span class="read-time">{{ page.read_time }} min read</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="article-body" id="article-body">
+      {{ content }}
+    </div>
+  </div>
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc-sidebar" id="toc-sidebar">
+    <div class="toc-label">// on this page</div>
+    <nav class="toc-nav" id="toc-nav"></nav>
+  </aside>
+
+</div>
+
+<script>
+  (function() {
+    const article = document.getElementById('article-body');
+    const nav     = document.getElementById('toc-nav');
+    if (!article || !nav) return;
+
+    const headings = article.querySelectorAll('h2, h3');
+    if (headings.length < 2) {
+      document.getElementById('toc-sidebar').style.display = 'none';
+      return;
+    }
+
+    // Build TOC
+    headings.forEach(function(h, i) {
+      if (!h.id) h.id = 'section-' + i;
+      const a = document.createElement('a');
+      a.href        = '#' + h.id;
+      a.textContent = h.textContent;
+      a.className   = 'toc-link toc-' + h.tagName.toLowerCase();
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.getElementById(h.id);
+        const offset = document.querySelector('nav.site-nav').offsetHeight + 16;
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+      });
+      nav.appendChild(a);
+    });
+
+    // Highlight active section on scroll
+    function setActive() {
+      const scrollY      = window.scrollY + 100;
+      const nearBottom   = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 50;
+      let active = headings[0];
+
+      if (nearBottom) {
+        active = headings[headings.length - 1];
+      } else {
+        headings.forEach(function(h) {
+          if (h.getBoundingClientRect().top + window.scrollY <= scrollY) {
+            active = h;
+          }
+        });
+      }
+
+      nav.querySelectorAll('a').forEach(function(a) { a.classList.remove('active'); });
+      const link = nav.querySelector('a[href="#' + active.id + '"]');
+      if (link) link.classList.add('active');
+    }
+
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+  })();
+</script>

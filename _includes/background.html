@@ -1,0 +1,73 @@
+<div class="site-bg" aria-hidden="true">
+  <svg class="site-bg-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <style>
+        .site-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .site-bg-svg { width: 100%; height: 100%; }
+        .wave-line { fill: none; stroke-width: 1; }
+
+        [data-theme="dark"] .wave-line,
+        :root:not([data-theme]) .wave-line { stroke: rgba(0, 212, 170, 0.06); }
+
+        [data-theme="light"] .wave-line { stroke: rgba(0, 122, 98, 0.07); }
+
+        @media (prefers-color-scheme: light) {
+          :root:not([data-theme]) .wave-line { stroke: rgba(0, 122, 98, 0.07); }
+        }
+
+        .wave-a { animation: drift-a 18s ease-in-out infinite alternate; }
+        .wave-b { animation: drift-b 22s ease-in-out infinite alternate; }
+        .wave-c { animation: drift-c 26s ease-in-out infinite alternate; }
+        .wave-d { animation: drift-d 20s ease-in-out infinite alternate; }
+
+        @keyframes drift-a { from { d: path("M-100,180 C150,120 350,240 600,160 C850,80 1050,200 1300,150"); } to   { d: path("M-100,200 C150,140 350,80  600,200 C850,280 1050,120 1300,180"); } }
+        @keyframes drift-b { from { d: path("M-100,320 C200,260 400,380 700,300 C900,240 1100,360 1300,290"); } to   { d: path("M-100,300 C200,380 400,260 700,340 C900,400 1100,260 1300,320"); } }
+        @keyframes drift-c { from { d: path("M-100,480 C250,420 500,540 750,460 C950,400 1150,500 1300,440"); } to   { d: path("M-100,460 C250,520 500,400 750,500 C950,560 1150,420 1300,480"); } }
+        @keyframes drift-d { from { d: path("M-100,620 C300,560 550,680 800,600 C1000,540 1200,640 1300,580"); } to   { d: path("M-100,640 C300,700 550,580 800,660 C1000,720 1200,580 1300,640"); } }
+
+        .grid-line { fill: none; stroke-width: 0.5; }
+        [data-theme="dark"] .grid-line,
+        :root:not([data-theme]) .grid-line { stroke: rgba(0, 212, 170, 0.03); }
+        [data-theme="light"] .grid-line { stroke: rgba(0, 122, 98, 0.04); }
+        @media (prefers-color-scheme: light) {
+          :root:not([data-theme]) .grid-line { stroke: rgba(0, 122, 98, 0.04); }
+        }
+
+        .dot { }
+        [data-theme="dark"] .dot,
+        :root:not([data-theme]) .dot { fill: rgba(0, 212, 170, 0.12); }
+        [data-theme="light"] .dot { fill: rgba(0, 122, 98, 0.1); }
+        @media (prefers-color-scheme: light) {
+          :root:not([data-theme]) .dot { fill: rgba(0, 122, 98, 0.1); }
+        }
+      </style>
+    </defs>
+
+    <!-- Subtle grid -->
+    <g class="grid-lines">
+      <line class="grid-line" x1="0" y1="25%" x2="100%" y2="25%"/>
+      <line class="grid-line" x1="0" y1="50%" x2="100%" y2="50%"/>
+      <line class="grid-line" x1="0" y1="75%" x2="100%" y2="75%"/>
+      <line class="grid-line" x1="25%" y1="0" x2="25%" y2="100%"/>
+      <line class="grid-line" x1="50%" y1="0" x2="50%" y2="100%"/>
+      <line class="grid-line" x1="75%" y1="0" x2="75%" y2="100%"/>
+    </g>
+
+    <!-- Animated wire waves -->
+    <path class="wave-line wave-a" d="M-100,180 C150,120 350,240 600,160 C850,80 1050,200 1300,150"/>
+    <path class="wave-line wave-b" d="M-100,320 C200,260 400,380 700,300 C900,240 1100,360 1300,290"/>
+    <path class="wave-line wave-c" d="M-100,480 C250,420 500,540 750,460 C950,400 1150,500 1300,440"/>
+    <path class="wave-line wave-d" d="M-100,620 C300,560 550,680 800,600 C1000,540 1200,640 1300,580"/>
+
+    <!-- Intersection dots -->
+    <circle class="dot" cx="25%" cy="25%" r="1.5"/>
+    <circle class="dot" cx="50%" cy="25%" r="1.5"/>
+    <circle class="dot" cx="75%" cy="25%" r="1.5"/>
+    <circle class="dot" cx="25%" cy="50%" r="1.5"/>
+    <circle class="dot" cx="50%" cy="50%" r="1.5"/>
+    <circle class="dot" cx="75%" cy="50%" r="1.5"/>
+    <circle class="dot" cx="25%" cy="75%" r="1.5"/>
+    <circle class="dot" cx="50%" cy="75%" r="1.5"/>
+    <circle class="dot" cx="75%" cy="75%" r="1.5"/>
+  </svg>
+</div>

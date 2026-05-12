@@ -1,0 +1,310 @@
+@use "variables" as *;
+
+// ── Theme tokens ──────────────────────────────────────────
+
+:root,
+[data-theme="dark"] {
+  --bg:       #{$dark-bg};
+  --bg2:      #{$dark-bg2};
+  --bg3:      #{$dark-bg3};
+  --border:   #{$dark-border};
+  --text:     #{$dark-text};
+  --muted:    #{$dark-muted};
+  --accent:   #{$dark-accent};
+  --accent2:  #{$dark-accent2};
+  --danger:   #{$dark-danger};
+  --warn:     #{$dark-warn};
+  --code-bg:  #{$dark-code-bg};
+  --tag-bg:   #{$dark-tag-bg};
+  --tag-c:    #{$dark-tag-c};
+}
+
+[data-theme="light"] {
+  --bg:       #{$light-bg};
+  --bg2:      #{$light-bg2};
+  --bg3:      #{$light-bg3};
+  --border:   #{$light-border};
+  --text:     #{$light-text};
+  --muted:    #{$light-muted};
+  --accent:   #{$light-accent};
+  --accent2:  #{$light-accent2};
+  --danger:   #{$light-danger};
+  --warn:     #{$light-warn};
+  --code-bg:  #{$light-code-bg};
+  --tag-bg:   #{$light-tag-bg};
+  --tag-c:    #{$light-tag-c};
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg:       #{$light-bg};
+    --bg2:      #{$light-bg2};
+    --bg3:      #{$light-bg3};
+    --border:   #{$light-border};
+    --text:     #{$light-text};
+    --muted:    #{$light-muted};
+    --accent:   #{$light-accent};
+    --accent2:  #{$light-accent2};
+    --danger:   #{$light-danger};
+    --warn:     #{$light-warn};
+    --code-bg:  #{$light-code-bg};
+    --tag-bg:   #{$light-tag-bg};
+    --tag-c:    #{$light-tag-c};
+  }
+}
+
+// Show sun in dark mode, moon in light mode
+[data-theme="light"] .theme-toggle {
+  .icon-sun  { display: block; }
+  .icon-moon { display: none; }
+}
+
+// ── Reset ─────────────────────────────────────────────────
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:     var(--bg);
+  color:          var(--text);
+  font-family:    $font-sans;
+  font-size:      15px;
+  line-height:    1.7;
+  min-height:     100vh;
+  display:        flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family:   $font-mono;
+  font-size:     0.85em;
+  background:    var(--bg3);
+  padding:       2px 5px;
+  border-radius: $radius-sm;
+  color:         var(--text);
+}
+
+// ── Shared utilities ──────────────────────────────────────
+
+.container {
+  max-width: $max-width;
+  margin:    0 auto;
+  padding:   2.5rem 2rem;
+}
+
+.section-header {
+  display:       flex;
+  align-items:   center;
+  gap:           0.75rem;
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size:      11px;
+    font-family:    $font-mono;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color:          var(--muted);
+    white-space:    nowrap;
+  }
+
+  h2.section-heading {
+    font-family:    $font-sans;
+    font-size:      18px;
+    font-weight:    600;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color:          var(--text);
+  }
+
+  .section-line {
+    flex:       1;
+    height:     1px;
+    background: var(--border);
+  }
+}
+
+// ── Tags / badges ─────────────────────────────────────────
+
+.tag {
+  font-family:    $font-mono;
+  font-size:      10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding:        2px 8px;
+  border-radius:  $radius-sm;
+  background:     var(--tag-bg);
+  color:          var(--tag-c);
+
+  &.malware             { background: rgba(240, 96,  96,  0.10); color: var(--danger); }
+  &.hunting             { background: rgba(240, 168, 64,  0.10); color: var(--warn);   }
+  &.detection           { background: rgba(0,   212, 170, 0.10); color: var(--accent); }
+  &.detection-engineering { background: rgba(0, 212, 170, 0.10); color: var(--accent); }
+  &.malware-analysis    { background: rgba(240, 96,  96,  0.10); color: var(--danger); }
+  &.tools               { background: rgba(79,  142, 247, 0.10); color: var(--accent2);}
+  &.intel               { background: rgba(79,  142, 247, 0.10); color: var(--accent2);}
+}
+
+.severity {
+  font-family:   $font-mono;
+  font-size:     10px;
+  padding:       2px 8px;
+  border-radius: $radius-sm;
+  margin-left:   auto;
+
+  &.high { background: rgba(240, 96,  96,  0.12); color: var(--danger); }
+  &.med  { background: rgba(240, 168, 64,  0.12); color: var(--warn);   }
+  &.low  { background: rgba(0,   212, 170, 0.12); color: var(--accent); }
+}
+
+.mitre-badge {
+  font-family:   $font-mono;
+  font-size:     10px;
+  padding:       1px 6px;
+  border-radius: $radius-sm;
+  background:    var(--bg3);
+  color:         var(--muted);
+  border:        1px solid var(--border);
+}
+
+.mitre-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.75rem; }
+
+// ── Post meta ─────────────────────────────────────────────
+
+.post-meta {
+  display:       flex;
+  align-items:   center;
+  gap:           0.5rem;
+  flex-wrap:     wrap;
+  margin-bottom: 0.75rem;
+}
+
+.post-date {
+  font-family: $font-mono;
+  font-size:   11px;
+  color:       var(--muted);
+}
+
+// ── Author strip ──────────────────────────────────────────
+
+.post-footer {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  margin-top:      1.25rem;
+  padding-top:     1rem;
+  border-top:      1px solid var(--border);
+}
+
+.post-author {
+  display:     flex;
+  align-items: center;
+  gap:         0.5rem;
+}
+
+.author-avatar {
+  width:           22px;
+  height:          22px;
+  border-radius:   50%;
+  background:      var(--bg3);
+  border:          1px solid var(--border);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       10px;
+  font-family:     $font-mono;
+  color:           var(--accent);
+}
+
+.author-name { font-size: 12px; color: var(--muted); }
+.read-time   { font-family: $font-mono; font-size: 11px; color: var(--muted); }
+
+// ── Callout boxes ─────────────────────────────────────────
+
+.callout {
+  background:    var(--bg3);
+  border-left:   3px solid var(--accent);
+  border-radius: 0 $radius-md $radius-md 0;
+  padding:       1rem 1.25rem;
+  margin:        1.25rem 0;
+  font-size:     13px;
+
+  &.warn   { border-color: var(--warn);   }
+  &.danger { border-color: var(--danger); }
+
+  .callout-label {
+    font-family:    $font-mono;
+    font-size:      10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color:          var(--accent);
+    margin-bottom:  0.35rem;
+  }
+
+  &.warn   .callout-label { color: var(--warn);   }
+  &.danger .callout-label { color: var(--danger); }
+}
+
+// ── IOC table ─────────────────────────────────────────────
+
+.ioc-table {
+  width:           100%;
+  border-collapse: collapse;
+  font-family:     $font-mono;
+  font-size:       12px;
+  margin:          1.25rem 0;
+
+  th {
+    text-align:     left;
+    padding:        8px 12px;
+    border-bottom:  1px solid var(--border);
+    color:          var(--muted);
+    font-weight:    500;
+    font-size:      11px;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding:       8px 12px;
+    border-bottom: 1px solid var(--border);
+    color:         var(--text);
+    word-break:    break-all;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td      { background: var(--bg3); }
+}
+
+// ── Footer ────────────────────────────────────────────────
+
+footer {
+  border-top:      1px solid var(--border);
+  padding:         1.5rem 2rem;
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+
+  .footer-title {
+    font-family: $font-mono;
+    font-size:   12px;
+    color:       var(--muted);
+  }
+
+  .footer-icons {
+    display: flex;
+    gap:     1.25rem;
+
+    a {
+      color:      var(--muted);
+      display:    flex;
+      transition: color 0.15s;
+
+      &:hover { color: var(--accent); }
+    }
+  }
+}

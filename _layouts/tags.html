@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<div class="container">
+  <div class="article-header">
+    <h1 class="article-title">Tags</h1>
+  </div>
+
+  <div class="tags-page">
+    {% assign sorted_tags = site.tags | sort %}
+    {% for tag in sorted_tags %}
+      <div class="tag-group" id="{{ tag[0] | slugify }}">
+        <div class="tag-group-header">
+          <span class="tag">{{ tag[0] }}</span>
+          <span class="tag-count">{{ tag[1].size }} post{% if tag[1].size != 1 %}s{% endif %}</span>
+        </div>
+        <ul class="tag-post-list">
+          {% for post in tag[1] %}
+            <li>
+              <a href="{{ post.url }}">{{ post.title }}</a>
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+</div>
