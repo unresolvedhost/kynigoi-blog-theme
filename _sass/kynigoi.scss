@@ -1,7 +1,7 @@
-@forward "variables";
-@use "base";
-@use "nav";
-@use "home";
-@use "post";
-@use "syntax";
-@use "strip";
+@import "variables";
+@import "base";
+@import "nav";
+@import "home";
+@import "post";
+@import "syntax";
+@import "strip";
