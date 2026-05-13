@@ -1,13 +1,13 @@
-@use "variables" as *;
+@import "variables";
 
 // ── Post page two-column layout ──────────────────────────
 
 .post-layout {
   display:     flex;
-  gap:         3rem;
-  max-width:   1200px;
+  gap:         4rem;
+  max-width:   1400px;
   margin:      0 auto;
-  padding:     0 2rem;
+  padding:     0 6rem 0 8rem;
   align-items: flex-start;
 }
 
@@ -106,7 +106,7 @@
 // ── Article body ─────────────────────────────────────────
 
 .article-body {
-  max-width: 680px;
+  max-width: 780px;
 
   p {
     margin-bottom: 1rem;

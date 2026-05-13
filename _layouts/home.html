@@ -14,19 +14,19 @@ layout: default
 {% assign featured_posts = featured_posts | slice: 0, 3 %}
 {% if featured_posts.size > 0 %}
 <div class="featured-section">
-  <div style="padding: 0 2rem; margin-bottom: 1rem;">
+  <div class="home-section-header">
     <h2 class="section-heading">Featured</h2>
   </div>
-  <div class="featured-bento" style="padding: 0 2rem;">
+  <div class="featured-bento">
     {% for post in featured_posts %}
       {% if forloop.index > 3 %}{% break %}{% endif %}
       {% assign i = forloop.index %}
       {% if i == 1 %}
-      <a href="{{ post.url | relative_url }}" class="bento-card bento-main">
+        <a href="{{ post.url | relative_url }}" class="bento-card bento-main">
       {% elsif i == 2 or i == 3 %}
-      <a href="{{ post.url | relative_url }}" class="bento-card bento-side">
+        <a href="{{ post.url | relative_url }}" class="bento-card bento-side">
       {% else %}
-      <a href="{{ post.url | relative_url }}" class="bento-card bento-bottom">
+        <a href="{{ post.url | relative_url }}" class="bento-card bento-bottom">
       {% endif %}
           <div class="post-meta">
             {% for cat in post.categories %}
@@ -53,16 +53,13 @@ layout: default
 
 <!-- CATEGORY STRIPS -->
 {% assign sorted_categories = site.categories | sort %}
-
 {% for category in sorted_categories %}
   {% assign cat = category[0] %}
   {% assign cat_posts = category[1] %}
   <div class="category-strip-section">
     <div class="category-strip-header">
-      <div class="section-header" style="margin-bottom:0; flex:1;">
-        <h2 class="section-heading">{{ cat }}</h2><div class="section-line"></div>
-      </div>
-      <a href="{{ '/categories/' | append: cat | slugify | prepend: '/' | relative_url }}/" class="view-more-link">
+      <h2 class="section-heading">{{ cat }}</h2>
+      <a href="{{ site.baseurl }}/categories/{{ cat | slugify }}/" class="view-more-link">
         view all ({{ cat_posts.size }}) &rarr;
       </a>
     </div>

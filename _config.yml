@@ -21,7 +21,7 @@ social:
   github: unresolvedhost
   x: kynigoi
 
-github_username: unresolvedhost
+github_username: yourusername
 
 permalink: /posts/:title/
 
@@ -51,15 +51,10 @@ defaults:
 collections:
   pages:
     output: true
+    permalink: /categories/:name/
 
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
   - node_modules
-
-jekyll-archives:
-  enabled: [categories]
-  layout: category
-  permalinks:
-    category: /categories/:name/

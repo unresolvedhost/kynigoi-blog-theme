@@ -1,4 +1,4 @@
-@use "variables" as *;
+@import "variables";
 
 nav.site-nav {
   position:        sticky;
@@ -6,7 +6,7 @@ nav.site-nav {
   z-index:         100;
   background:      var(--bg);
   border-bottom:   1px solid var(--border);
-  padding:         0 2rem;
+  padding:         0 4rem;
   display:         flex;
   align-items:     center;
   justify-content: space-between;
