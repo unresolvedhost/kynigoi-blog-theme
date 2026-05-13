@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 div.highlight, figure.highlight {
   position:      relative;
   background:    var(--code-bg);
