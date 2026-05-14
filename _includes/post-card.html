@@ -1,13 +1,7 @@
-{% comment %}
-  Usage:
-    {% include post-card.html post=post featured=true %}
-    {% include post-card.html post=post %}
-{% endcomment %}
-
 {% assign p = include.post %}
 {% assign is_featured = include.featured %}
 
-<a href="{{ p.url | relative_url }}" class="{% if is_featured %}post-featured{% else %}post-card{% endif %}" style="display:flex; flex-direction:column;">
+<a href="{{ p.url | relative_url }}" class="{% if is_featured %}post-featured{% else %}post-card{% endif %}">
   <div class="post-meta">
     {% unless include.hide_categories %}
       {% for cat in p.categories %}
@@ -27,10 +21,10 @@
   {% if p.description %}
     <div class="post-excerpt">{{ p.description }}</div>
   {% elsif p.excerpt %}
-    <div class="post-excerpt">{{ p.excerpt | strip_html | truncatewords: 30 }}</div>
+    <div class="post-excerpt">{{ p.excerpt | strip_html | truncatewords: 20 }}</div>
   {% endif %}
 
-  <div class="post-footer">
+  <div class="card-footer">
     <div class="post-author">
       <div class="author-avatar">{{ site.author | upcase | slice: 0 }}</div>
       <span class="author-name">{{ p.author | default: site.author }}</span>

@@ -14,9 +14,6 @@ layout: default
           <span class="tag {{ cat | downcase | replace: ' ', '-' }}">{{ cat }}</span>
         {% endfor %}
         <span class="post-date">{{ page.date | date: "%Y-%m-%d" }}</span>
-        {% if page.severity %}
-          <span class="severity {{ page.severity | downcase }}">{{ page.severity | upcase }}</span>
-        {% endif %}
       </div>
 
       <h1 class="article-title">{{ page.title }}</h1>

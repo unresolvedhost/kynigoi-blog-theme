@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as *;
 
 // ── Theme tokens ──────────────────────────────────────────
 
@@ -53,12 +53,6 @@
   }
 }
 
-// Show sun in dark mode, moon in light mode
-[data-theme="light"] .theme-toggle {
-  .icon-sun  { display: block; }
-  .icon-moon { display: none; }
-}
-
 // ── Reset ─────────────────────────────────────────────────
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -90,19 +84,19 @@ code {
   color:         var(--text);
 }
 
-// ── Shared utilities ──────────────────────────────────────
+// ── Utilities ─────────────────────────────────────────────
 
 .container {
   max-width: $max-width;
   margin:    0 auto;
-  padding:   2.5rem 2rem;
+  padding:   $space-lg $space-xl;
 }
 
 .section-header {
   display:       flex;
   align-items:   center;
   gap:           0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: $space-md;
 
   h2 {
     font-size:      11px;
@@ -120,7 +114,7 @@ code {
   }
 }
 
-// ── Tags / badges ─────────────────────────────────────────
+// ── Tags ──────────────────────────────────────────────────
 
 .tag {
   font-family:    $font-mono;
@@ -132,13 +126,13 @@ code {
   background:     var(--tag-bg);
   color:          var(--tag-c);
 
-  &.malware             { background: rgba(240, 96,  96,  0.10); color: var(--danger); }
-  &.hunting             { background: rgba(240, 168, 64,  0.10); color: var(--warn);   }
-  &.detection           { background: rgba(0,   212, 170, 0.10); color: var(--accent); }
-  &.detection-engineering { background: rgba(0, 212, 170, 0.10); color: var(--accent); }
-  &.malware-analysis    { background: rgba(240, 96,  96,  0.10); color: var(--danger); }
-  &.tools               { background: rgba(79,  142, 247, 0.10); color: var(--accent2);}
-  &.intel               { background: rgba(79,  142, 247, 0.10); color: var(--accent2);}
+  &.malware               { background: rgba(240, 96,  96,  0.10); color: var(--danger); }
+  &.hunting               { background: rgba(240, 168, 64,  0.10); color: var(--warn);   }
+  &.detection             { background: rgba(0,   212, 170, 0.10); color: var(--accent); }
+  &.detection-engineering { background: rgba(0,   212, 170, 0.10); color: var(--accent); }
+  &.malware-analysis      { background: rgba(240, 96,  96,  0.10); color: var(--danger); }
+  &.tools                 { background: rgba(79,  142, 247, 0.10); color: var(--accent2);}
+  &.intel                 { background: rgba(79,  142, 247, 0.10); color: var(--accent2);}
 }
 
 .severity {
@@ -179,17 +173,26 @@ code {
   font-family: $font-mono;
   font-size:   11px;
   color:       var(--muted);
+  margin-left: auto;
 }
 
-// ── Author strip ──────────────────────────────────────────
+// ── Card footer (pinned to bottom) ────────────────────────
 
+.card-footer {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  margin-top:      auto;
+  padding-top:     1rem;
+}
+
+// Keep .post-footer as alias for article header use
 .post-footer {
   display:         flex;
   align-items:     center;
   justify-content: space-between;
   margin-top:      1.25rem;
   padding-top:     1rem;
-  border-top:      1px solid var(--border);
 }
 
 .post-author {
@@ -275,7 +278,7 @@ code {
 
 footer {
   border-top:      1px solid var(--border);
-  padding:         1.5rem 2rem;
+  padding:         1.5rem $space-xl;
   display:         flex;
   align-items:     center;
   justify-content: space-between;

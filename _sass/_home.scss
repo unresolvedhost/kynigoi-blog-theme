@@ -1,9 +1,9 @@
-@import "variables";
+@use "variables" as *;
 
 // ── Hero ─────────────────────────────────────────────────
 
 .hero {
-  padding: 5rem 4rem 4rem;
+  padding: $space-2xl $space-xl $space-lg;
 
   .hero-eyebrow {
     font-family:    $font-mono;
@@ -11,7 +11,7 @@
     color:          var(--accent);
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom:  1rem;
+    margin-bottom:  $space-sm;
   }
 
   h1 {
@@ -19,7 +19,7 @@
     font-weight:    600;
     line-height:    1.15;
     letter-spacing: -0.03em;
-    margin-bottom:  1rem;
+    margin-bottom:  $space-sm;
   }
 
   p.tagline {
@@ -29,7 +29,7 @@
   }
 }
 
-// ── Section heading (used everywhere) ────────────────────
+// ── Section heading ───────────────────────────────────────
 
 .section-heading {
   font-family:    $font-sans;
@@ -45,7 +45,7 @@
   display:       flex;
   align-items:   center;
   gap:           0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: $space-md;
 
   h2 {
     font-family:    $font-mono;
@@ -63,14 +63,14 @@
   }
 }
 
-// ── Featured section ─────────────────────────────────────
+// ── Featured section ──────────────────────────────────────
 
 .featured-section {
-  padding: 2.5rem 4rem 0;
+  padding: $space-lg $space-xl 0;
 }
 
 .home-section-header {
-  margin-bottom: 1.25rem;
+  margin-bottom: $space-sm;
 }
 
 // ── Featured bento grid ──────────────────────────────────
@@ -79,14 +79,15 @@
   display:               grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows:    auto auto auto;
-  gap:                   1rem;
-  margin-bottom:         3rem;
+  gap:                   $space-sm;
+  margin-bottom:         $space-lg;
 }
+
 .bento-card {
   background:      var(--bg2);
   border:          1px solid var(--border);
   border-radius:   $radius-lg;
-  padding:         2rem;
+  padding:         $space-md;
   display:         flex;
   flex-direction:  column;
   color:           inherit;
@@ -107,14 +108,12 @@
 
 .bento-side {
   grid-column: 2 / 3;
-
   .bento-excerpt { -webkit-line-clamp: 2; }
 }
 
 .bento-bottom {
   grid-column: span 1;
   grid-row:    3 / 4;
-
   .bento-excerpt { -webkit-line-clamp: 2; }
 }
 
@@ -141,8 +140,8 @@
   display:         flex;
   align-items:     center;
   justify-content: space-between;
-  margin-top:      1.5rem;
-  padding-top:     1rem;
+  margin-top:      $space-sm;
+  padding-top:     $space-sm;
   border-top:      1px solid var(--border);
 }
 
@@ -151,25 +150,29 @@
   .bento-main, .bento-side, .bento-bottom { grid-column: 1; grid-row: auto; }
 }
 
-// ── Post cards (category page grid) ──────────────────────
+// ── Post cards ────────────────────────────────────────────
 
 .post-grid {
   display:               grid;
-  grid-template-columns: 1fr 1fr;
-  gap:                   1rem;
-  margin-bottom:         2.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap:                   $space-sm;
+  margin-bottom:         $space-lg;
 
-  @media (max-width: 600px) { grid-template-columns: 1fr; }
+  @media (max-width: 1100px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 600px)  { grid-template-columns: 1fr; }
 }
 
 .post-card {
   background:      var(--bg2);
   border:          1px solid var(--border);
   border-radius:   $radius-lg;
-  padding:         1.5rem;
-  display:         block;
+  padding:         1.75rem;
+  display:         flex;
+  flex-direction:  column;
+  height:          260px;
   color:           inherit;
   transition:      border-color 0.15s;
+  overflow:        hidden;
 
   &:hover { border-color: rgba(79, 142, 247, 0.3); text-decoration: none; }
 }
@@ -181,21 +184,30 @@
   margin-bottom:  0.5rem;
   letter-spacing: -0.01em;
   color:          var(--text);
+  display:           -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow:          hidden;
 }
 
 .post-excerpt {
-  font-size:   14px;
-  color:       var(--muted);
-  line-height: 1.6;
+  font-size:          14px;
+  color:              var(--muted);
+  line-height:        1.6;
+  flex:               1;
+  display:            -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow:           hidden;
 }
 
-// ── Pagination ───────────────────────────────────────────
+// ── Pagination ────────────────────────────────────────────
 
 .pagination {
   display:         flex;
   justify-content: center;
   gap:             0.5rem;
-  margin-top:      2rem;
+  margin-top:      $space-md;
   font-family:     $font-mono;
   font-size:       13px;
 
