@@ -90,14 +90,18 @@
 }
 
 .bento-card {
-  @include glass;
-  border-radius:   $radius-lg;
-  padding:         $space-md;
-  display:         flex;
-  flex-direction:  column;
-  color:           inherit;
-  text-decoration: none;
-  transition:      border-color 0.2s, box-shadow 0.2s;
+  background:              var(--bg2);
+  backdrop-filter:         blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border:                  1px solid var(--border);
+  box-shadow:              0 4px 24px rgba(0, 0, 0, 0.12);
+  border-radius:           $radius-lg;
+  padding:                 $space-md;
+  display:                 flex;
+  flex-direction:          column;
+  color:                   inherit;
+  text-decoration:         none;
+  transition:              border-color 0.2s, box-shadow 0.2s;
 
   &:hover {
     border-color: rgba(0, 212, 170, 0.4);
@@ -177,6 +181,7 @@
 
 .post-card {
   background:      var(--bg2);
+  backdrop-filter:         blur(12px);
   border:          1px solid var(--border);
   border-radius:   $radius-lg;
   padding:         1.75rem;
