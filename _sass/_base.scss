@@ -167,6 +167,8 @@ code {
   gap:           0.5rem;
   flex-wrap:     wrap;
   margin-bottom: 0.75rem;
+  min-width:     0;
+  overflow:      hidden;
 }
 
 .post-date {

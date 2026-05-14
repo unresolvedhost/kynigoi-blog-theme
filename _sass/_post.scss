@@ -11,12 +11,24 @@
   align-items: flex-start;
   @include glass;
   border-radius: $radius-lg;
+  overflow:    hidden;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    margin:         1rem;
+    padding:        $space-md;
+    gap:            $space-md;
+    border-radius:  $radius-md;
+  }
 }
 
 .post-content {
   flex:      1;
   min-width: 0;
+  max-width: 100%;
   padding:   2.5rem 0;
+
+  @media (max-width: 900px) { padding: 1rem 0; }
 }
 
 // ── TOC sidebar ──────────────────────────────────────────
@@ -72,8 +84,10 @@
 }
 
 @media (max-width: 900px) {
-  .post-layout { flex-direction: column; }
-  .toc-sidebar { display: none; }
+  .post-layout    { flex-direction: column; }
+  .toc-sidebar    { display: none; }
+  .article-title  { font-size: 1.6rem; }
+  .article-body   { max-width: 100%; }
 }
 
 // ── Article header ───────────────────────────────────────
@@ -82,14 +96,18 @@
   padding:       3rem 0 2rem;
   border-bottom: 1px solid var(--border);
   margin-bottom: 2rem;
+  overflow:      hidden;
+
+  @media (max-width: 900px) { padding: 1.5rem 0 1rem; }
 }
 
 .article-title {
-  font-size:      clamp(1.5rem, 3vw, 2.2rem);
+  font-size:      clamp(1.4rem, 4vw, 2.2rem);
   font-weight:    600;
   line-height:    1.25;
   letter-spacing: -0.02em;
   margin-bottom:  1rem;
+  word-break:     break-word;
 }
 
 .back-link {
@@ -108,13 +126,15 @@
 // ── Article body ─────────────────────────────────────────
 
 .article-body {
-  max-width: 780px;
+  max-width:  100%;
+  overflow-x: hidden;
 
   p {
     margin-bottom: 1rem;
     color:         var(--text);
     font-size:     15px;
     line-height:   1.8;
+    word-break:    break-word;
   }
 
   h2 {
@@ -123,6 +143,7 @@
     margin:         2rem 0 0.75rem;
     padding-bottom: 0.5rem;
     border-bottom:  1px solid var(--border);
+    word-break:     break-word;
   }
 
   h3 {
@@ -153,6 +174,7 @@
     font-style:    italic;
     background:    var(--bg3);
     border-radius: 0 $radius-md $radius-md 0;
+    word-break:    break-word;
   }
 
   table {
@@ -161,6 +183,8 @@
     font-family:     $font-mono;
     font-size:       12px;
     margin:          1.25rem 0;
+    display:         block;
+    overflow-x:      auto;
 
     th {
       text-align:     left;
@@ -170,6 +194,7 @@
       font-weight:    500;
       font-size:      11px;
       text-transform: uppercase;
+      white-space:    nowrap;
     }
 
     td {
@@ -185,14 +210,30 @@
 
   img {
     max-width:     100%;
+    height:        auto;
     border-radius: $radius-md;
     border:        1px solid var(--border);
     margin:        1.25rem 0;
+    display:       block;
   }
 
   hr {
     border:     none;
     border-top: 1px solid var(--border);
     margin:     2rem 0;
+  }
+
+  // Code blocks — horizontal scroll instead of overflow
+  pre {
+    max-width:  100%;
+    overflow-x: auto;
+  }
+
+  code {
+    word-break: break-all;
+  }
+
+  pre code {
+    word-break: normal;
   }
 }
