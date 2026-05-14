@@ -6,9 +6,11 @@
   display:     flex;
   gap:         $space-xl;
   max-width:   1400px;
-  margin:      0 auto;
-  padding:     0 $space-xl;
+  margin:      2rem auto;
+  padding:     $space-lg $space-xl;
   align-items: flex-start;
+  @include glass;
+  border-radius: $radius-lg;
 }
 
 .post-content {

@@ -4,9 +4,9 @@ $font-mono:  'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
 // ── Dark theme (default) ─────────────────────────────────
 $dark-bg:         #0d0f14;
-$dark-bg2:        #13161e;
-$dark-bg3:        #1a1d27;
-$dark-border:     rgba(255, 255, 255, 0.07);
+$dark-bg2:        rgba(255, 255, 255, 0.04);
+$dark-bg3:        rgba(255, 255, 255, 0.07);
+$dark-border:     rgba(255, 255, 255, 0.08);
 $dark-text:       #e2e4ea;
 $dark-muted:      #7a7f91;
 $dark-accent:     #00d4aa;
@@ -19,8 +19,8 @@ $dark-tag-c:      #00d4aa;
 
 // ── Light theme ──────────────────────────────────────────
 $light-bg:        #f5f6f8;
-$light-bg2:       #ffffff;
-$light-bg3:       #eef0f4;
+$light-bg2:       rgba(255, 255, 255, 0.55);
+$light-bg3:       rgba(255, 255, 255, 0.75);
 $light-border:    rgba(0, 0, 0, 0.08);
 $light-text:      #1a1d27;
 $light-muted:     #6b7080;
@@ -32,7 +32,16 @@ $light-code-bg:   #1a1d27;
 $light-tag-bg:    rgba(0, 122, 98, 0.10);
 $light-tag-c:     #007a62;
 
-// ── Spacing scale ────────────────────────────────────────
+// ── Glassmorphism mixin ───────────────────────────────────
+
+@mixin glass {
+  background:              var(--bg2);
+  backdrop-filter:         blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border:                  1px solid var(--border);
+  box-shadow:              0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
 $space-sm:   1rem;    // 16px
 $space-md:   2rem;    // 32px
 $space-lg:   3rem;    // 48px
