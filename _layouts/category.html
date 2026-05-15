@@ -11,7 +11,7 @@ layout: default
 <!-- POST GRID -->
 {% assign cat_posts = site.posts | where_exp: "p", "p.categories contains page.category_name" %}
 
-<div class="category-page" style="padding: 2rem;">
+<div class="category-page">
   <div class="category-page-grid">
     {% for post in cat_posts %}
       {% include post-card.html post=post hide_categories=true show_tags=true %}
