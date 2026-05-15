@@ -3,23 +3,19 @@
 
 <a href="{{ p.url | relative_url }}" class="{% if is_featured %}post-featured{% else %}post-card{% endif %}">
   <div class="post-meta">
-    {% unless include.hide_categories %}
-      {% for cat in p.categories %}
-        <span class="tag {{ cat | downcase | replace: ' ', '-' }}">{{ cat }}</span>
-      {% endfor %}
-    {% endunless %}
-    {% if include.show_tags %}
-      {% for tag in p.tags limit: 3 %}
-        <span class="tag">{{ tag }}</span>
-      {% endfor %}
-    {% endif %}
     <span class="post-date">{{ p.date | date: "%Y-%m-%d" }}</span>
   </div>
 
   <div class="post-title">{{ p.title }}</div>
 
+  <div class="post-card-tags">
+    {% for tag in p.tags limit: 3 %}
+      <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+
   {% if p.description %}
-    <div class="post-excerpt">{{ p.description }}</div>
+    <div class="post-excerpt">{{ p.description | truncatewords: 20 }}</div>
   {% elsif p.excerpt %}
     <div class="post-excerpt">{{ p.excerpt | strip_html | truncatewords: 20 }}</div>
   {% endif %}

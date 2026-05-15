@@ -1,5 +1,5 @@
 ---
 layout: category
-title: Powershell
-category_name: Powershell
+title: PowerShell
+category_name: PowerShell
 ---

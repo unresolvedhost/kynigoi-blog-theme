@@ -166,16 +166,17 @@ code {
   align-items:   center;
   gap:           0.5rem;
   flex-wrap:     wrap;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.1rem;
   min-width:     0;
   overflow:      hidden;
 }
 
 .post-date {
-  font-family: $font-mono;
-  font-size:   11px;
-  color:       var(--muted);
-  margin-left: auto;
+  font-family:   $font-mono;
+  font-size:     11px;
+  color:         var(--muted);
+  margin-left:   auto;
+  margin-bottom: 0.25rem;
 }
 
 // ── Card footer (pinned to bottom) ────────────────────────

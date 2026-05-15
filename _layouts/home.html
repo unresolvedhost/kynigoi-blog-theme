@@ -68,12 +68,14 @@ layout: default
         {% for post in cat_posts limit: 4 %}
           <a href="{{ post.url | relative_url }}" class="scroll-card">
             <div class="post-meta">
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </div>
+            <div class="scroll-card-title">{{ post.title }}</div>
+            <div class="scroll-card-tags">
               {% for tag in post.tags limit: 3 %}
                 <span class="tag">{{ tag }}</span>
               {% endfor %}
-              <span class="post-date post-date--right">{{ post.date | date: "%Y-%m-%d" }}</span>
             </div>
-            <div class="scroll-card-title">{{ post.title }}</div>
             {% if post.description %}
               <div class="scroll-card-excerpt">{{ post.description | truncatewords: 18 }}</div>
             {% endif %}

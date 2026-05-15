@@ -167,6 +167,16 @@
   .bento-main, .bento-side, .bento-bottom { grid-column: 1; grid-row: auto; }
 }
 
+// ── Post card tags ────────────────────────────────────────
+
+.post-card-tags {
+  display:       flex;
+  gap:           0.35rem;
+  flex-wrap:     wrap;
+  margin-top:    0.2rem;
+  margin-bottom: 0.4rem;
+}
+
 // ── Post cards ────────────────────────────────────────────
 
 .post-grid {
@@ -180,43 +190,49 @@
 }
 
 .post-card {
-  background:      var(--bg2);
+  background:              var(--bg2);
   backdrop-filter:         blur(12px);
-  border:          1px solid var(--border);
-  border-radius:   $radius-lg;
-  padding:         1.75rem;
-  display:         flex;
-  flex-direction:  column;
-  height:          260px;
-  color:           inherit;
-  transition:      border-color 0.15s;
-  overflow:        hidden;
+  -webkit-backdrop-filter: blur(12px);
+  border:                  1px solid var(--border);
+  box-shadow:              0 4px 24px rgba(0, 0, 0, 0.12);
+  border-radius:           $radius-lg;
+  padding:                 1.75rem;
+  display:                 flex;
+  flex-direction:          column;
+  height:                  260px;
+  color:                   inherit;
+  transition:              border-color 0.2s, box-shadow 0.2s;
+  overflow:                hidden;
 
-  &:hover { border-color: rgba(79, 142, 247, 0.3); text-decoration: none; }
+  &:hover {
+    border-color: rgba(79, 142, 247, 0.4);
+    box-shadow:   0 8px 32px rgba(79, 142, 247, 0.08);
+    text-decoration: none;
+  }
 }
 
 .post-title {
-  font-size:      18px;
-  font-weight:    600;
-  line-height:    1.35;
-  margin-bottom:  0.5rem;
-  letter-spacing: -0.01em;
-  color:          var(--text);
-  display:           -webkit-box;
+  font-size:          18px;
+  font-weight:        600;
+  line-height:        1.35;
+  margin-bottom:      0.25rem;
+  letter-spacing:     -0.01em;
+  color:              var(--text);
+  display:            -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  overflow:          hidden;
+  overflow:           hidden;
 }
 
 .post-excerpt {
   font-size:          14px;
   color:              var(--muted);
   line-height:        1.6;
-  flex:               1;
   display:            -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   overflow:           hidden;
+  max-height:         calc(1.6em * 2);
 }
 
 // ── Pagination ────────────────────────────────────────────
