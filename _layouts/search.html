@@ -1,0 +1,86 @@
+---
+layout: default
+---
+
+<div class="hero">
+  <h1>Search</h1>
+  <p class="tagline">Search across all posts, tags and categories.</p>
+</div>
+
+<div class="search-page">
+  <div class="search-bar">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input type="text" id="search-input" placeholder="Search posts..." autocomplete="off" autofocus>
+    <span class="search-count" id="search-count"></span>
+  </div>
+
+  <div id="search-results" class="category-page-grid"></div>
+</div>
+
+<!-- Build search index from all posts -->
+<script>
+const posts = [
+  {% for post in site.posts %}
+  {
+    title:       {{ post.title | jsonify }},
+    url:         {{ post.url | relative_url | jsonify }},
+    date:        {{ post.date | date: "%Y-%m-%d" | jsonify }},
+    description: {{ post.description | default: post.excerpt | strip_html | truncatewords: 30 | jsonify }},
+    tags:        {{ post.tags | jsonify }},
+    categories:  {{ post.categories | jsonify }},
+    author:      {{ post.author | default: site.author | jsonify }},
+    read_time:   {{ post.read_time | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+
+function renderCard(post) {
+  const tags = post.tags.slice(0,3).map(t =>
+    `<span class="tag">${t}</span>`
+  ).join('')
+
+  return `
+    <a href="${post.url}" class="post-card">
+      <div class="post-meta">
+        <span class="post-date">${post.date}</span>
+      </div>
+      <div class="post-title">${post.title}</div>
+      <div class="post-card-tags">${tags}</div>
+      <div class="post-excerpt">${post.description || ''}</div>
+      <div class="card-footer">
+        <div class="post-author">
+          <div class="author-avatar">${(post.author || '?')[0].toUpperCase()}</div>
+          <span class="author-name">${post.author || ''}</span>
+        </div>
+        ${post.read_time ? `<span class="read-time">${post.read_time} min read</span>` : ''}
+      </div>
+    </a>`
+}
+
+function search(q) {
+  if (!q) return posts
+  const terms = q.toLowerCase().split(/\s+/).filter(Boolean)
+  return posts.filter(p => {
+    const hay = [p.title, p.description, ...p.tags, ...p.categories].join(' ').toLowerCase()
+    return terms.every(t => hay.includes(t))
+  })
+}
+
+const input   = document.getElementById('search-input')
+const results = document.getElementById('search-results')
+const count   = document.getElementById('search-count')
+
+function update() {
+  const q   = input.value.trim()
+  const res = search(q)
+  count.textContent = q ? `${res.length} result${res.length !== 1 ? 's' : ''}` : ''
+  results.innerHTML = res.map(renderCard).join('')
+}
+
+input.addEventListener('input', update)
+
+// Show all posts on load
+update()
+</script>

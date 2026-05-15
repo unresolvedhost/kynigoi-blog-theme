@@ -47,6 +47,11 @@ defaults:
     values:
       layout: post
       toc: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
 
 collections:
   pages:
