@@ -45,28 +45,6 @@
   white-space:    nowrap;
 }
 
-.section-header {
-  display:       flex;
-  align-items:   center;
-  gap:           0.75rem;
-  margin-bottom: $space-md;
-
-  h2 {
-    font-family:    $font-mono;
-    font-size:      11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color:          var(--muted);
-    white-space:    nowrap;
-  }
-
-  .section-line {
-    flex:       1;
-    height:     1px;
-    background: var(--border);
-  }
-}
-
 // ── Featured section ──────────────────────────────────────
 
 .featured-section {
