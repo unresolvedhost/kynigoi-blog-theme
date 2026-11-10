@@ -201,11 +201,32 @@
       padding:       8px 12px;
       border-bottom: 1px solid var(--border);
       color:         var(--text);
-      word-break:    break-all;
+      // Wrap between words only — the table scrolls sideways if it's too wide
+      word-break:    normal;
+      overflow-wrap: normal;
+
+      code { word-break: normal; }
     }
 
     tr:last-child td { border-bottom: none; }
     tr:hover td      { background: var(--bg3); }
+  }
+
+  figure {
+    margin: 1.5rem 0;
+
+    img {
+      margin: 0;
+      width:  100%;
+    }
+
+    figcaption {
+      font-family: $font-mono;
+      font-size:   11px;
+      color:       var(--muted);
+      margin-top:  0.5rem;
+      text-align:  center;
+    }
   }
 
   img {

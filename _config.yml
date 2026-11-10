@@ -1,6 +1,5 @@
 title: Kynigoi Blog
-tagline: Threat detection research for defenders
-description: Original research on threat detection, malware analysis, and threat hunting.
+description: Security Engineering Blog.
 author: kynigoi
 
 url: "https://unresolvedhost.github.io"
@@ -10,18 +9,18 @@ timezone: Australia/Perth
 lang: en
 
 favicon:
-  ico:             /assets/img/favicons/favicon.ico
-  apple_touch_icon: /assets/img/favicons/apple-touch-icon.png
-  favicon_32:      /assets/img/favicons/favicon-32x32.png
-  favicon_16:      /assets/img/favicons/favicon-16x16.png
+  ico:             /assets/img/favicons/favicon.svg
+  apple_touch_icon: /assets/img/favicons/favicon.svg
+  favicon_32:      /assets/img/favicons/favicon.svg
+  favicon_16:      /assets/img/favicons/favicon.svg
 
 social:
   email: richardphilipsroy@gmail.com
   linkedin: richardphilipsroy
   github: unresolvedhost
-  x: kynigoi
+  x: unresolvedhost
 
-github_username: yourusername
+github_username: unresolvedhost
 
 permalink: /posts/:title/
 

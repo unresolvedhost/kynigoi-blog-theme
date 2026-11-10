@@ -8,18 +8,8 @@
 </title>
 
 <!-- Favicon -->
-{% if site.favicon.ico %}
-<link rel="icon" href="{{ site.favicon.ico | prepend: site.baseurl }}">
-{% endif %}
-{% if site.favicon.apple_touch_icon %}
-<link rel="apple-touch-icon" href="{{ site.favicon.apple_touch_icon | prepend: site.baseurl }}">
-{% endif %}
-{% if site.favicon.favicon_32 %}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ site.favicon.favicon_32 | prepend: site.baseurl }}">
-{% endif %}
-{% if site.favicon.favicon_16 %}
-<link rel="icon" type="image/png" sizes="16x16" href="{{ site.favicon.favicon_16 | prepend: site.baseurl }}">
-{% endif %}
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicons/favicon.svg' | prepend: site.baseurl }}">
+<link rel="apple-touch-icon" href="{{ '/assets/img/favicons/favicon.svg' | prepend: site.baseurl }}">
 
 <!-- Stylesheet -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | prepend: site.baseurl }}">

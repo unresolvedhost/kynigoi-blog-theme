@@ -44,7 +44,7 @@ layout: default
 
   <!-- TOC SIDEBAR -->
   <aside class="toc-sidebar" id="toc-sidebar">
-    <div class="toc-label">// on this page</div>
+    <div class="toc-label">on this page</div>
     <nav class="toc-nav" id="toc-nav"></nav>
   </aside>
 
@@ -101,5 +101,82 @@ layout: default
 
     window.addEventListener('scroll', setActive, { passive: true });
     setActive();
+  })();
+
+  // Copy-to-clipboard buttons on code blocks
+  (function() {
+    const article = document.getElementById('article-body');
+    if (!article) return;
+
+    const ICON_COPY  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    const ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity  = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok ? Promise.resolve() : Promise.reject();
+    }
+
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text).catch(function() { return fallbackCopy(text); });
+      }
+      return fallbackCopy(text);
+    }
+
+    function setState(btn, state) {
+      btn.classList.remove('copied', 'failed');
+      if (state === 'copied') {
+        btn.classList.add('copied');
+        btn.innerHTML = ICON_CHECK + '<span>copied</span>';
+      } else if (state === 'failed') {
+        btn.classList.add('failed');
+        btn.innerHTML = ICON_COPY + '<span>failed</span>';
+      } else {
+        btn.innerHTML = ICON_COPY + '<span>copy</span>';
+      }
+    }
+
+    // Languages Rouge doesn't know (eql, kql, spl, yara...) render as a bare
+    // <pre> with no .highlight wrapper — wrap them so they get styled too
+    article.querySelectorAll('pre').forEach(function(pre) {
+      if (pre.closest('.highlight')) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'highlight';
+      pre.parentNode.insertBefore(wrap, pre);
+      wrap.appendChild(pre);
+    });
+
+    article.querySelectorAll('div.highlight, figure.highlight').forEach(function(block) {
+      // With line numbers enabled, Rouge puts the code in .rouge-code
+      const code = block.querySelector('.rouge-code pre') || block.querySelector('pre');
+      if (!code) return;
+
+      const btn = document.createElement('button');
+      btn.type      = 'button';
+      btn.className = 'copy-btn';
+      btn.setAttribute('aria-label', 'Copy code to clipboard');
+      setState(btn, 'idle');
+
+      let timer;
+      btn.addEventListener('click', function() {
+        copyText(code.innerText.replace(/\n$/, ''))
+          .then(function() { setState(btn, 'copied'); })
+          .catch(function() { setState(btn, 'failed'); })
+          .finally(function() {
+            clearTimeout(timer);
+            timer = setTimeout(function() { setState(btn, 'idle'); }, 2000);
+          });
+      });
+
+      block.appendChild(btn);
+    });
   })();
 </script>
